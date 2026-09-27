@@ -1,196 +1,255 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autoservis Pospíšil Pavel | Autoopravna Jablonec nad Nisou</title>
-<meta name="description" content="Autoservis Pospíšil Pavel – autoopravna v Jablonci nad Nisou (Kokonín). Hodnocení 4,6 z 26 recenzí na Googlu. Objednejte se telefonicky na 483 302 112.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autoopravna v Kokoníně, Jablonec nad Nisou | Autoservis Pospíšil Pavel</title>
+<meta name="description" content="Autoopravna na Rychnovské 368 v Kokoníně, Jablonec nad Nisou. Na opravu se objednáte telefonem 483 302 112. 21 z 26 hodnocení na Googlu je pět hvězd.">
+<meta name="theme-color" content="#ebe9e4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131416" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-alt:#151b23;
-    --header:#0a0e14;
-    --accent:#e8630a;
-    --accent-dark:#c4520a;
-    --text:#1a1f27;
-    --text-light:#5a6472;
-    --white:#ffffff;
-    --border:#e5e8ec;
-    --radius:10px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.55;}
-  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;letter-spacing:.02em;}
-  a{color:inherit;text-decoration:none;}
-  .container{max-width:960px;margin:0 auto;padding:0 20px;}
+:root{
+  color-scheme:light dark;
+  --paper:#ebe9e4;
+  --ink:#18191b;
+  --muted:#595853;
+  --rule:#c4c1b8;
+  --signal:#c2301b;
+  --on-signal:#fff;
+  --pad:clamp(1.25rem,5vw,3rem);
+  --sans:'Archivo','Arial Narrow',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#131416;--ink:#e8e6e0;--muted:#a3a19a;--rule:#393a3d}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 var(--sans);font-stretch:100%;overflow-wrap:break-word}
+h1,h2,p,ol,ul,dl,figure,blockquote{margin:0}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.frame{max-width:72rem;margin-inline:auto;padding-inline:var(--pad)}
+.nw{white-space:nowrap}
 
-  header{background:linear-gradient(160deg,var(--header) 0%,#1c2432 100%);color:var(--white);padding:56px 0 64px;}
-  .topbar{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#aab3c0;margin-bottom:40px;flex-wrap:wrap;gap:8px;}
-  .topbar a{color:var(--accent);font-weight:600;}
-  .hero-badge{display:inline-block;background:rgba(232,99,10,.15);border:1px solid var(--accent);color:var(--accent);font-size:.8rem;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:18px;text-transform:uppercase;letter-spacing:.06em;}
-  h1{font-size:2.4rem;font-weight:700;line-height:1.1;margin-bottom:10px;}
-  .hero-city{font-size:1.15rem;color:#c7cedb;margin-bottom:24px;}
-  .rating{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:14px 18px;max-width:340px;}
-  .rating .stars{color:#ffb020;font-size:1.3rem;letter-spacing:2px;}
-  .rating .score{font-size:1.4rem;font-weight:700;}
-  .rating .count{font-size:.85rem;color:#aab3c0;}
+/* hlavička: široké písmo jako nápis nad vraty dílny */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.25rem 1.5rem;padding-top:1rem;padding-bottom:.85rem;border-bottom:1px solid var(--ink)}
+.brand{font:700 .9375rem/1.2 var(--sans);font-stretch:125%;text-transform:uppercase;letter-spacing:.06em}
+.top-addr{font-size:.9375rem;color:var(--muted)}
 
-  section{padding:56px 0;}
-  section.alt{background:var(--bg-alt);color:var(--white);}
-  section.alt h2{color:var(--white);}
-  h2{font-size:1.9rem;margin-bottom:8px;color:var(--text);}
-  .lead{color:var(--text-light);margin-bottom:32px;max-width:60ch;}
-  section.alt .lead{color:#aab3c0;}
+/* úvod */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding-top:2rem;padding-bottom:2.75rem}
+.hero > *{min-width:0}
+.hero h1{font:800 clamp(3.1rem,15.5vw,8rem)/.9 var(--sans);font-stretch:68%;letter-spacing:-.005em}
+.hero h1 .sub{display:block;margin-top:.8rem;font:600 clamp(1.125rem,4.6vw,1.5rem)/1.2 var(--sans);font-stretch:100%;letter-spacing:0}
+.lead{font-size:1.1875rem;line-height:1.45;max-width:30rem}
+.phone{display:block;background:var(--signal);color:var(--on-signal);text-decoration:none;padding:.8rem 1rem .95rem;border-radius:3px}
+.phone-label{display:block;font:600 1rem/1.2 var(--sans)}
+.phone-num{display:block;font:800 clamp(2.9rem,15vw,6rem)/.95 var(--sans);font-stretch:68%;white-space:nowrap;margin-top:.2rem;font-variant-numeric:tabular-nums}
+.phone:hover .phone-num{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.08em}
+.phone:focus-visible{outline-color:var(--ink)}
+.more{display:grid;gap:.6rem;font-size:1rem;max-width:30rem}
+.more p{color:var(--muted)}
+.more a{color:var(--ink);font-weight:600}
 
-  .grid{display:grid;grid-template-columns:1fr;gap:16px;}
-  .card{border:1px solid var(--border);border-radius:var(--radius);padding:20px;background:var(--white);}
-  .card h3{font-size:1.15rem;margin-bottom:6px;color:var(--text);}
-  .card p{color:var(--text-light);font-size:.95rem;}
+/* všech 26 hodnocení, jedno vedle druhého */
+.tally{border-top:4px solid var(--ink);padding-top:.7rem;margin-top:.75rem}
+.tally h2{font:600 1rem/1.2 var(--sans)}
+.bars,.keys{list-style:none;padding:0;display:grid;grid-template-columns:repeat(26,minmax(0,1fr));column-gap:2px}
+.bars{grid-template-rows:minmax(0,1fr);align-items:end;height:clamp(5.5rem,24vw,9.5rem);margin-top:1rem;border-bottom:2px solid var(--ink)}
+.bars li{min-width:0;background:var(--ink);height:100%}
+.bars .r4{height:80%}
+.bars .r1{height:20%}
+.keys{margin-top:.45rem}
+.keys li{min-width:0;font:600 .8125rem/1.1 var(--mono);color:var(--muted);white-space:nowrap}
+.keys b{display:block;font:600 1.5rem/1 var(--mono);color:var(--ink)}
+.k5{grid-column:span 21}.k4{grid-column:span 3}.k1{grid-column:span 2}
+.tally .note{margin-top:1rem;font-size:1rem;max-width:48rem}
 
-  .hours-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:24px;max-width:480px;}
-  .hours-box p{margin-bottom:10px;}
-  .hours-box strong{color:var(--accent);}
+/* sekce: štítek vlevo, obsah vpravo */
+.band{border-top:1px solid var(--ink);padding-top:2.25rem;padding-bottom:2.75rem}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem 3rem}
+.split > *{min-width:0}
+.split h2{font:700 clamp(1.6rem,6.4vw,2.35rem)/1.05 var(--sans);font-stretch:112%;max-width:14ch}
+.aside p{margin-top:.9rem;max-width:22rem}
 
-  .contact-grid{display:grid;grid-template-columns:1fr;gap:14px;}
-  .contact-item{display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
-  .contact-item .ico{width:42px;height:42px;flex:0 0 auto;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
-  .contact-item .label{font-size:.8rem;color:var(--text-light);}
-  .contact-item .value{font-weight:600;font-size:1.05rem;}
-  .maps-btn{display:inline-block;margin-top:20px;background:var(--accent);color:var(--white);padding:14px 26px;border-radius:var(--radius);font-weight:600;text-align:center;}
-  .maps-btn:hover{background:var(--accent-dark);}
+/* co říct do telefonu */
+.prep{list-style:none;padding:0;counter-reset:krok;display:grid;grid-template-columns:minmax(0,1fr);column-gap:2.5rem}
+.prep li{counter-increment:krok;display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:.75rem;padding-top:.9rem;padding-bottom:1rem;border-top:1px solid var(--rule)}
+.prep li::before{content:counter(krok);font:600 1.5rem/1 var(--mono)}
+.prep strong{font-weight:700}
+.field{display:inline-block;font:600 .95rem/1 var(--mono);border:1.5px solid var(--ink);border-radius:2px;padding:.2em .45em .15em;white-space:nowrap}
 
-  footer{background:var(--header);color:#7c8798;text-align:center;padding:24px 20px;font-size:.8rem;}
-  footer a{color:var(--accent);}
+/* recenze */
+.q{padding-top:1.4rem;padding-bottom:1.5rem;border-top:1px solid var(--rule)}
+.q:first-child{border-top:0;padding-top:0}
+.q .when{font:700 1.125rem/1.1 var(--sans);font-stretch:112%;margin-bottom:.6rem}
+.q blockquote{font-size:1.125rem;line-height:1.5;max-width:38rem}
+.q.lead-q blockquote{font:500 clamp(1.35rem,5vw,1.95rem)/1.32 var(--sans);max-width:42rem}
+.q figcaption{margin-top:.65rem;font-weight:600}
 
-  @media(min-width:560px){
-    h1{font-size:3rem;}
-    .grid{grid-template-columns:1fr 1fr;}
-    .contact-grid{grid-template-columns:1fr 1fr;}
-  }
-  @media(min-width:820px){
-    .grid{grid-template-columns:1fr 1fr 1fr;}
-  }
+/* adresa */
+.addr{font:800 clamp(2.4rem,11vw,4.25rem)/.95 var(--sans);font-stretch:68%}
+.postal{margin-top:.8rem;font-size:1.125rem}
+.go{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem;margin-bottom:1.75rem}
+.go a{display:inline-flex;align-items:center;min-height:2.875rem;padding:0 1.1rem;border:2px solid var(--ink);border-radius:3px;text-decoration:none;font-weight:600}
+.go a:first-child{background:var(--ink);color:var(--paper)}
+.go a:hover{text-decoration:underline}
+.facts{display:grid;grid-template-columns:minmax(0,6.5rem) minmax(0,1fr);gap:.55rem 1rem;max-width:34rem}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0}
+.facts .num{font:500 .9375rem/1.55 var(--mono)}
+
+.foot{border-top:1px solid var(--ink);padding-top:1.1rem;padding-bottom:1.6rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;font-size:.875rem;color:var(--muted)}
+
+@media (min-width:40rem){
+  .prep{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bars,.keys{column-gap:4px}
+}
+@media (min-width:56rem){
+  .hero{grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-areas:"h1 h1" "phone lead" "phone more" "tally tally";column-gap:3.5rem;row-gap:1.25rem;padding-top:3rem;padding-bottom:3.5rem}
+  .hero h1{grid-area:h1;margin-bottom:1rem}
+  .lead{grid-area:lead;align-self:start;padding-top:.4rem}
+  .phone{grid-area:phone;align-self:start;padding:1.1rem 1.4rem 1.2rem}
+  .more{grid-area:more;align-self:start}
+  .tally{grid-area:tally;margin-top:1.5rem}
+  .split{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+  .band{padding-top:3rem;padding-bottom:3.5rem}
+}
 </style>
-</head>
-<body>
-
-<header>
-  <div class="container">
-    <div class="topbar">
-      <span>Jablonec nad Nisou · Kokonín</span>
-      <a href="tel:+420483302112">483 302 112</a>
-    </div>
-    <span class="hero-badge">Autoopravna</span>
-    <h1>Autoservis Pospíšil Pavel</h1>
-    <p class="hero-city">Autoopravna v Jablonci nad Nisou</p>
-    <div class="rating">
-      <span class="stars">★★★★★</span>
-      <div>
-        <span class="score">4,6</span> <span class="count">/ 5 · 26 recenzí na Googlu</span>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section>
-  <div class="container">
-    <h2>Služby</h2>
-    <p class="lead">Přehled běžných úkonů, které autoopravna tohoto typu obvykle nabízí. Rozsah a dostupnost konkrétní služby si prosím ověřte telefonicky.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>Opravy vozidel</h3>
-        <p>Běžné mechanické opravy osobních automobilů.</p>
-      </div>
-      <div class="card">
-        <h3>Diagnostika závad</h3>
-        <p>Vyhledání a odstranění poruch pomocí diagnostiky.</p>
-      </div>
-      <div class="card">
-        <h3>Servisní prohlídky</h3>
-        <p>Pravidelný servis a kontrola technického stavu vozu.</p>
-      </div>
-      <div class="card">
-        <h3>Výměna oleje a filtrů</h3>
-        <p>Výměna motorového oleje a příslušných filtrů.</p>
-      </div>
-      <div class="card">
-        <h3>Brzdy a podvozek</h3>
-        <p>Kontrola a opravy brzdového systému a podvozku.</p>
-      </div>
-      <div class="card">
-        <h3>Příprava na STK</h3>
-        <p>Kontrola vozidla a odstranění závad před technickou prohlídkou.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="container">
-    <h2>Otevírací doba</h2>
-    <p class="lead">Aktuální otevírací dobu a termín pro objednání vozidla vám rádi potvrdíme telefonicky.</p>
-    <div class="hours-box">
-      <p><strong>Telefonická domluva:</strong> 483 302 112</p>
-      <p>Před návštěvou doporučujeme termín předem telefonicky ověřit.</p>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="container">
-    <h2>Kontakt</h2>
-    <p class="lead">Autoservis Pospíšil Pavel, Rychnovská 368, 468 01 Jablonec nad Nisou – Kokonín.</p>
-    <div class="contact-grid">
-      <a class="contact-item" href="tel:+420483302112">
-        <span class="ico">☎</span>
-        <span>
-          <span class="label">Telefon</span><br>
-          <span class="value">483 302 112</span>
-        </span>
-      </a>
-      <a class="contact-item" href="mailto:autpp@volny.cz">
-        <span class="ico">✉</span>
-        <span>
-          <span class="label">E-mail</span><br>
-          <span class="value">autpp@volny.cz</span>
-        </span>
-      </a>
-    </div>
-    <a class="maps-btn" href="https://www.google.com/maps/search/?api=1&query=Rychnovsk%C3%A1+368%2C+468+01+Jablonec+nad+Nisou%2C+Kokon%C3%ADn" target="_blank" rel="noopener">Zobrazit na mapě</a>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <p>Autoservis Pospíšil Pavel · Rychnovská 368, 468 01 Jablonec nad Nisou, Kokonín</p>
-    <p style="margin-top:8px;">Ukázka webu — Vladislav Zachariev</p>
-  </div>
-</footer>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AutoRepair",
   "name": "Autoservis Pospíšil Pavel",
-  "telephone": "+420483302112",
+  "telephone": "+420 483 302 112",
   "email": "autpp@volny.cz",
+  "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": "10423923"},
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Rychnovská 368",
-    "addressLocality": "Jablonec nad Nisou - Kokonín",
     "postalCode": "468 01",
+    "addressLocality": "Jablonec nad Nisou 8-Kokonín",
     "addressCountry": "CZ"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.6",
-    "reviewCount": "26",
-    "bestRating": "5"
-  }
+  "geo": {"@type": "GeoCoordinates", "latitude": 50.702737, "longitude": 15.182317},
+  "hasMap": "https://www.google.com/maps/place/Autoservis+Posp%C3%AD%C5%A1il+Pavel/data=!4m7!3m6!1s0x470eca96556ac8bf:0x34c45aee4a69492a!8m2!3d50.7027369!4d15.1823175!16s%2Fg%2F1tfvfym5!19sChIJv8hqVZbKDkcRKklpSu5axDQ",
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.6", "bestRating": "5", "worstRating": "1", "ratingCount": "26"},
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Bezbariérový vstup", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Bezbariérové parkování", "value": true}
+  ]
 }
 </script>
+</head>
+<body>
+
+<header class="top frame">
+  <span class="brand">Autoservis Pospíšil&nbsp;Pavel</span>
+  <span class="top-addr">Rychnovská 368, Kokonín</span>
+</header>
+
+<main>
+
+<section class="hero frame" aria-labelledby="titulek">
+  <h1 id="titulek">Autoopravna v&nbsp;Kokoníně.<span class="sub">Rychnovská 368, <span class="nw">Jablonec nad Nisou</span></span></h1>
+
+  <p class="lead">Na opravu se objednáváte telefonem. Tam vám řekneme i&nbsp;otevírací dobu a&nbsp;nejbližší volný termín.</p>
+
+  <a class="phone" href="tel:+420483302112">
+    <span class="phone-label">Objednání a&nbsp;otevírací doba</span>
+    <span class="phone-num">483 302 112</span>
+  </a>
+
+  <div class="more">
+    <p>Pro dotazy, které nespěchají: <a href="mailto:autpp@volny.cz">autpp@volny.cz</a></p>
+    <p>Bezbariérový vstup i&nbsp;parkování.</p>
+  </div>
+
+  <div class="tally">
+    <h2>Všech 26 hodnocení na Googlu</h2>
+    <ol class="bars" aria-hidden="true">
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      <li class="r4"></li><li class="r4"></li><li class="r4"></li>
+      <li class="r1"></li><li class="r1"></li>
+    </ol>
+    <ul class="keys" aria-hidden="true">
+      <li class="k5"><b>5</b>×21</li>
+      <li class="k4"><b>4</b>×3</li>
+      <li class="k1"><b>1</b>×2</li>
+    </ul>
+    <p class="note">21 z&nbsp;26 hodnocení je pět hvězd, průměr 4,6. Zbylých pět: třikrát čtyři hvězdy a&nbsp;dvakrát jedna. <a href="#recenze">Co v&nbsp;recenzích píšou</a></p>
+  </div>
+</section>
+
+<section class="band frame" aria-labelledby="objednani">
+  <div class="split">
+    <h2 id="objednani">Když se objednáváte</h2>
+    <ol class="prep">
+      <li><p><strong>Malý technický průkaz nebo VIN.</strong> VIN najdete v&nbsp;malém technickém průkazu v&nbsp;kolonce <span class="field">E</span>, má 17 znaků.</p></li>
+      <li><p><strong>Kolik má auto najeto.</strong> Stav tachometru, stačí zaokrouhleně na tisíce.</p></li>
+      <li><p><strong>Co auto dělá a&nbsp;kdy.</strong> Jestli se zvuk ozývá za studena, při brzdění, nebo v&nbsp;zatáčce. U&nbsp;kontrolky která to je a&nbsp;jestli svítí, nebo bliká.</p></li>
+      <li><p><strong>Jestli se s&nbsp;autem dá ještě jezdit.</strong> Podle toho se domluvíme, kdy ho přivézt.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band frame" id="recenze" aria-labelledby="recenze-h">
+  <div class="split">
+    <div class="aside">
+      <h2 id="recenze-h">Z&nbsp;recenzí na Googlu</h2>
+      <p>Průměr 4,6 z&nbsp;26 hodnocení. Dvě z&nbsp;nich jsou za jednu hvězdu a&nbsp;v&nbsp;Mapách je najdete spolu s&nbsp;ostatními.</p>
+      <p><a href="https://www.google.com/maps/place/Autoservis+Posp%C3%AD%C5%A1il+Pavel/data=!4m7!3m6!1s0x470eca96556ac8bf:0x34c45aee4a69492a!8m2!3d50.7027369!4d15.1823175!16s%2Fg%2F1tfvfym5!19sChIJv8hqVZbKDkcRKklpSu5axDQ" target="_blank" rel="noopener">Všechny recenze v&nbsp;Mapách Google</a></p>
+    </div>
+    <div class="quotes">
+      <figure class="q lead-q">
+        <p class="when">Výměna pneu ve špičce</p>
+        <blockquote>Příjemná komunikace, výměna na čas, rychle a ochotní i ve špičce…</blockquote>
+        <figcaption>Štěpánka K.</figcaption>
+      </figure>
+      <figure class="q">
+        <p class="when">Stálá zákaznice</p>
+        <blockquote>Skvělé jednání, rychlý, levný a kvalitní servis. Jinam už nechci :))</blockquote>
+        <figcaption>Nikol M.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band frame" aria-labelledby="kde">
+  <div class="split">
+    <h2 id="kde">Kde nás najdete</h2>
+    <div>
+      <p class="addr">Rychnovská&nbsp;368,<br> Kokonín</p>
+      <p class="postal">Rychnovská 368, 468&nbsp;01 Jablonec nad&nbsp;Nisou&nbsp;<span class="nw">8-Kokonín</span></p>
+      <p class="go">
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=50.702737%2C15.182317" target="_blank" rel="noopener">Navigovat sem</a>
+        <a href="https://www.google.com/maps/place/Autoservis+Posp%C3%AD%C5%A1il+Pavel/data=!4m7!3m6!1s0x470eca96556ac8bf:0x34c45aee4a69492a!8m2!3d50.7027369!4d15.1823175!16s%2Fg%2F1tfvfym5!19sChIJv8hqVZbKDkcRKklpSu5axDQ" target="_blank" rel="noopener">Otevřít v&nbsp;Mapách Google</a>
+      </p>
+      <dl class="facts">
+        <dt>Telefon</dt><dd><a href="tel:+420483302112">483 302 112</a></dd>
+        <dt>E-mail</dt><dd><a href="mailto:autpp@volny.cz">autpp@volny.cz</a></dd>
+        <dt>GPS</dt><dd class="num">50.702737, 15.182317</dd>
+        <dt>Přístup</dt><dd>Bezbariérový vstup i&nbsp;parkování</dd>
+        <dt>IČO</dt><dd class="num">10423923</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot frame">
+  <p>Autoservis Pospíšil Pavel, IČO 10423923</p>
+  <p>Ukázka webu — Vladislav Zachariev</p>
+</footer>
+
 </body>
 </html>
